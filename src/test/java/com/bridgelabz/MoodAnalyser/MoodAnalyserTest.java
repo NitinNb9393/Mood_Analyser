@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class MoodAnalyserTest {
 	@Test
-	void givenMessage_WhenSad_ShouldReturnSad() {
+	public void givenMessage_WhenSad_ShouldReturnSad() {
 		moodAnalyser moodAnalyser = new moodAnalyser();
 		String mood = null;
 		try {
@@ -17,7 +17,7 @@ public class MoodAnalyserTest {
 	}
 
 	@Test
-	void givenMessage_WhenInAnyMood_ShouldReturnHappy() {
+	public void givenMessage_WhenInAnyMood_ShouldReturnHappy() {
 		moodAnalyser moodAnalyser = new moodAnalyser();
 		String mood = null;
 		try {
@@ -29,7 +29,7 @@ public class MoodAnalyserTest {
 	}
 
 	@Test
-	void givenMessage_WhenNotSad_ShouldReturnHappy() {
+	public void givenMessage_WhenNotSad_ShouldReturnHappy() {
 		moodAnalyser moodAnalyser = new moodAnalyser();
 		String mood = null;
 		try {
@@ -41,7 +41,7 @@ public class MoodAnalyserTest {
 	}
 
 	@Test
-	void givenMessage_WhenSad_ShouldReturnSad_UsingParameterizedConstructor() {
+	public void givenMessage_WhenSad_ShouldReturnSad_UsingParameterizedConstructor() {
 		moodAnalyser moodAnalyser = new moodAnalyser("I am in Sad Mood");
 		String mood = null;
 		try {
@@ -53,7 +53,7 @@ public class MoodAnalyserTest {
 	}
 
 	@Test
-	void givenMessage_WhenNotSad_ShouldReturnHappy_UsingParameterizedConstructor() {
+	public void givenMessage_WhenNotSad_ShouldReturnHappy_UsingParameterizedConstructor() {
 		moodAnalyser moodAnalyser = new moodAnalyser("I am in Happy Mood");
 		String mood = null;
 		try {
@@ -65,12 +65,22 @@ public class MoodAnalyserTest {
 	}
 
 	@Test
-	void givenNullMood_ShouldThrow_MoodAnalysisException() {
+	public void givenNullMood_ShouldThrow_MoodAnalysisException() {
 		moodAnalyser moodAnalyser = new moodAnalyser(null);
 		try {
 			moodAnalyser.analyseMood();
 		} catch (moodAnalysisException e) {
 			Assert.assertEquals(moodAnalysisException.ExceptionType.ENTERED_NULL, e.type);
+		}
+	}
+
+	@Test
+	public void givenEmptyMood_ShouldThrow_MoodAnalysisException() {
+		moodAnalyser moodAnalyser = new moodAnalyser("");
+		try {
+			moodAnalyser.analyseMood();
+		} catch (moodAnalysisException e) {
+			Assert.assertEquals(moodAnalysisException.ExceptionType.ENTERED_EMPTY, e.type);
 		}
 	}
 }
