@@ -14,19 +14,20 @@ public class moodAnalyser {
 		System.out.println("Welcome to mood analyser Program");
 	}
 
-	public String analyseMood(String message) {
+	public String analyseMood(String message) throws moodAnalysisException {
 		this.message = message;
 		return analyseMood();
 	}
 
-	public String analyseMood() {
+	public String analyseMood() throws moodAnalysisException {
 		try {
 			if (message.contains("Sad"))
 				return "SAD";
 			else
 				return "HAPPY";
 		} catch (NullPointerException exception) {
-			return "HAPPY";
+			throw new moodAnalysisException(moodAnalysisException.ExceptionType.ENTERED_NULL,
+					"Please enter proper message");
 		}
 	}
 }
